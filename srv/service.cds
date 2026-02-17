@@ -1,6 +1,7 @@
 using { hotel.reservation as my } from '../db/schema';
 
 service AdminService {
+    @cds.redirection.target
     entity Hotels as projection on my.Hotels;
     entity Rooms as projection on my.Rooms;
     entity Guests as projection on my.Guests;
