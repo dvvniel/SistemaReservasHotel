@@ -20,6 +20,21 @@
       "[production]": {
         "auth": "xsuaa"
       },
+      "[development]": {
+        "auth": "mock",
+        "users": {
+          "alice": {
+            "roles": [
+              "admin"
+            ]
+          },
+          "bob": {
+            "roles": [
+              "user"
+            ]
+          }
+        }
+      },
       "connectivity": true,
       "destinations": true,
       "html5-repo": true
