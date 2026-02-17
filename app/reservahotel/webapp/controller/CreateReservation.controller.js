@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/routing/History"
-], function (Controller, UIComponent, MessageToast, JSONModel, History) {
+    "sap/ui/core/routing/History",
+    "sap/m/MessageBox"
+], function (Controller, UIComponent, MessageToast, JSONModel, History, MessageBox) {
     "use strict";
 
     return Controller.extend("com.reservahotel.controller.CreateReservation", {
@@ -72,10 +73,10 @@ sap.ui.define([
         },
 
         _handleMessageBoxOpen: function (sMessage, sMessageBoxType) {
-            sap.m.MessageBox[sMessageBoxType](sMessage, {
-                actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+            MessageBox[sMessageBoxType](sMessage, {
+                actions: [MessageBox.Action.YES, MessageBox.Action.NO],
                 onClose: function (oAction) {
-                    if (oAction === sap.m.MessageBox.Action.YES) {
+                    if (oAction === MessageBox.Action.YES) {
                         this._createReservation();
                     }
                 }.bind(this)
