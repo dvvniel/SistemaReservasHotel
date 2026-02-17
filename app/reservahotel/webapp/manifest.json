@@ -98,12 +98,23 @@
           "target": [
             "TargetMain"
           ]
+        },
+        {
+          "name": "RouteHotelDetail",
+          "pattern": "Hotel/{hotelId}",
+          "target": [
+            "TargetHotelDetail"
+          ]
         }
       ],
       "targets": {
         "TargetMain": {
           "id": "Main",
           "name": "Main"
+        },
+        "TargetHotelDetail": {
+          "id": "HotelDetail",
+          "name": "HotelDetail"
         }
       }
     },

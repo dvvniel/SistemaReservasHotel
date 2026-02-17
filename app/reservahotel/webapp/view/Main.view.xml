@@ -1,6 +1,56 @@
 <mvc:View controllerName="com.reservahotel.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <f:DynamicPage id="dynamicPageId" headerExpanded="true" toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Grand Hotel Management" level="H1" titleStyle="H2"/>
+                </f:heading>
+                <f:expandedContent>
+                    <Label text="Premium Dashboard"/>
+                </f:expandedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <f:content>
+                    <HBox alignItems="Center" justifyContent="SpaceBetween" width="100%">
+                        <VBox>
+                            <Label text="Welcome back, Admin" design="Bold"/>
+                            <Label text="Manage your properties efficiently."/>
+                        </VBox>
+                    </HBox>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox class="sapUiSmallMargin">
+                <Title text="Your Porperties" titleStyle="H3" class="sapUiMediumMarginBottom"/>
+                
+                <Grid containerQuery="true" defaultSpan="XL4 L4 M6 S12">
+                    <List items="{/Hotels}" growing="true" growingThreshold="10" growingScrollToLoad="false" backgroundDesign="Transparent" showSeparators="None">
+                         <CustomListItem type="Active" press=".onPressHotel" class="hotelCard sapUiSmallMarginBottom">
+                            <HBox justifyContent="SpaceBetween" alignItems="Start" class="sapUiMediumMargin">
+                                <VBox>
+                                    <Title text="{name}" titleStyle="H4" class="hotelTitle"/>
+                                    <Label text="{city}, {country_code}" class="hotelLocation"/>
+                                    <RatingIndicator value="{rating}" maxValue="5" editable="false" iconSize="1rem" class="sapUiTinyMarginTop"/>
+                                </VBox>
+                                <core:Icon src="sap-icon://building" size="2rem" color="#1a2b4b"/>
+                            </HBox>
+                            <HBox justifyContent="Start" class="sapUiMediumMarginBegin sapUiMediumMarginBottom">
+                                <ObjectStatus text="Active" state="Success" icon="sap-icon://sys-enter-2"/>
+                            </HBox>
+                        </CustomListItem>
+                    </List>
+                </Grid>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
 </mvc:View>

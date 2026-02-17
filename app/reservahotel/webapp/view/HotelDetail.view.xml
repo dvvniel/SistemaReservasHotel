@@ -1,0 +1,65 @@
+<mvc:View controllerName="com.reservahotel.controller.HotelDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage id="dynamicPageId" showFooter="true" toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{name}" level="H1"/>
+                </f:heading>
+                <f:expandedContent>
+                    <Label text="{city}, {country_code}"/>
+                </f:expandedContent>
+                <f:actions>
+                    <Button icon="sap-icon://nav-back" tooltip="Back" press=".onNavBack"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <layout:HorizontalLayout allowWrapping="true">
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectAttribute title="Address" text="{address}"/>
+                        <ObjectAttribute title="City" text="{city}"/>
+                        <ObjectAttribute title="Country" text="{country_code}"/>
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <ObjectAttribute title="Rating" text="{rating} Stars"/>
+                        <RatingIndicator value="{rating}" maxValue="5" editable="false" iconSize="1rem"/>
+                    </layout:VerticalLayout>
+                </layout:HorizontalLayout>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <IconTabBar id="idIconTabBar" expanded="true" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter icon="sap-icon://bed" text="Rooms" key="rooms">
+                        <Table items="{rooms}" width="auto">
+                            <columns>
+                                <Column><Text text="Room Number"/></Column>
+                                <Column><Text text="Type"/></Column>
+                                <Column><Text text="Price"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier title="{roomNumber}"/>
+                                        <Text text="{type}"/>
+                                        <ObjectNumber number="{pricePerNight}" unit="{currency_code}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://calendar" text="Reservations" key="reservations">
+                         <MessageStrip text="Reservations functionality coming soon in the next update." type="Information" showIcon="true"/>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

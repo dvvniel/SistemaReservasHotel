@@ -1,1 +1,35 @@
-/* Enter your custom styles here */
+/* Global Customizations */
+.sapFDynamicPageTitle, .sapFDynamicPageHeader {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styling */
+.hotelCard {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.hotelCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+}
+
+.hotelTitle {
+    color: #1a202c;
+    font-weight: 700;
+}
+
+.hotelLocation {
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+/* Override List Item selection background */
+.sapMLIBActive {
+    background-color: #ebf8ff !important;
+}
