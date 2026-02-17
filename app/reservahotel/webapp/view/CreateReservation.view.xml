@@ -12,7 +12,7 @@
                     dateValue="{wizard>/checkInDate}" 
                     secondDateValue="{wizard>/checkOutDate}" 
                     change=".onDateChange" 
-                    minDate="{= new Date()}"
+                    minDate="{wizard>/minDate}"
                     width="100%"/>
             </WizardStep>
 

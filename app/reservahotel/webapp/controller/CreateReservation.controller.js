@@ -16,7 +16,8 @@ sap.ui.define([
                 checkInDate: null,
                 checkOutDate: null,
                 selectedRoomId: null,
-                selectedGuestId: null
+                selectedGuestId: null,
+                minDate: new Date()
             }), "wizard");
         },
 
