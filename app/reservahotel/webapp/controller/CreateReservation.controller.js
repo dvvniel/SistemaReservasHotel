@@ -88,12 +88,14 @@ sap.ui.define([
             var oWizardModel = this.getView().getModel("wizard");
             var oData = oWizardModel.getData();
 
+            var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyy-MM-dd" });
+
             var oListBinding = oModel.bindList("/Reservations");
             var oContext = oListBinding.create({
                 room_ID: oData.selectedRoomId,
                 guest_ID: oData.selectedGuestId,
-                checkInDate: oData.checkInDate,
-                checkOutDate: oData.checkOutDate,
+                checkInDate: oDateFormat.format(oData.checkInDate),
+                checkOutDate: oDateFormat.format(oData.checkOutDate),
                 status: 'Booked'
             });
 
