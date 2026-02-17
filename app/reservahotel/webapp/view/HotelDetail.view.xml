@@ -15,6 +15,7 @@
                     <Label text="{city}, {country_code}"/>
                 </f:expandedContent>
                 <f:actions>
+                    <Button text="Book Room" type="Emphasized" press=".onPressBook"/>
                     <Button icon="sap-icon://nav-back" tooltip="Back" press=".onNavBack"/>
                 </f:actions>
             </f:DynamicPageTitle>

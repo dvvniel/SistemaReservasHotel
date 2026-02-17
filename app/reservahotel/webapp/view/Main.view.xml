@@ -26,6 +26,23 @@
                             <Label text="Welcome back, Admin" design="Bold"/>
                             <Label text="Manage your properties efficiently."/>
                         </VBox>
+                        <HBox>
+                            <GenericTile class="sapUiTinyMarginBegin tileLayout" header="Total Hotels" frameType="OneByOne">
+                                <TileContent>
+                                    <NumericContent value="{= ${/Hotels}.length || 0}" icon="sap-icon://building"/>
+                                </TileContent>
+                            </GenericTile>
+                            <GenericTile class="sapUiTinyMarginBegin tileLayout" header="Reservations" frameType="OneByOne">
+                                <TileContent>
+                                    <NumericContent value="5" icon="sap-icon://calendar" valueColor="Good"/>
+                                </TileContent>
+                            </GenericTile>
+                             <GenericTile class="sapUiTinyMarginBegin tileLayout" header="Revenue" frameType="OneByOne">
+                                <TileContent>
+                                    <NumericContent value="1500" icon="sap-icon://money-bills" valueColor="Critical" indicator="Up"/>
+                                </TileContent>
+                            </GenericTile>
+                        </HBox>
                     </HBox>
                 </f:content>
             </f:DynamicPageHeader>

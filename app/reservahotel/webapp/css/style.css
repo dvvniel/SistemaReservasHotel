@@ -1,5 +1,6 @@
 /* Global Customizations */
-.sapFDynamicPageTitle, .sapFDynamicPageHeader {
+.sapFDynamicPageTitle,
+.sapFDynamicPageHeader {
     background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -32,4 +33,15 @@
 /* Override List Item selection background */
 .sapMLIBActive {
     background-color: #ebf8ff !important;
+}
+
+/* KPI Tiles Transparent Background */
+.tileLayout {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.tileLayout .sapMGT {
+    background: transparent !important;
 }

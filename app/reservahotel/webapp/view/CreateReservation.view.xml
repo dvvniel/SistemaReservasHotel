@@ -1,0 +1,58 @@
+<mvc:View controllerName="com.reservahotel.controller.CreateReservation"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Page title="Book a Room" showNavButton="true" navButtonPress=".onNavBack">
+        <Wizard id="reservationWizard" complete="onWizardCompleted">
+            <WizardStep id="stepDate" title="Select Dates" validated="false">
+                <DateRangeSelection 
+                    id="dateRange" 
+                    value="{wizard>/dateRange}" 
+                    dateValue="{wizard>/checkInDate}" 
+                    secondDateValue="{wizard>/checkOutDate}" 
+                    change=".onDateChange" 
+                    minDate="{= new Date()}"
+                    width="100%"/>
+            </WizardStep>
+
+            <WizardStep id="stepRoom" title="Select Room" validated="false">
+                <Select id="roomSelect" 
+                    forceSelection="false" 
+                    items="{path: '/Rooms', parameters: {expand: 'hotel'}}"
+                    selectedKey="{wizard>/selectedRoomId}"
+                    change=".onRoomSelect"
+                    width="100%">
+                    <core:ListItem key="{ID}" text="{roomNumber} - {type} ({pricePerNight} {currency_code})" additionalText="{hotel/name}"/>
+                </Select>
+            </WizardStep>
+
+            <WizardStep id="stepGuest" title="Select Guest" validated="false">
+                <Select id="guestSelect"
+                    forceSelection="false"
+                    items="{/Guests}"
+                    selectedKey="{wizard>/selectedGuestId}"
+                    change=".onGuestSelect"
+                    width="100%">
+                    <core:ListItem key="{ID}" text="{firstName} {lastName}" additionalText="{email}"/>
+                </Select>
+            </WizardStep>
+
+             <WizardStep id="stepReview" title="Review &amp; Confirm">
+                <form:SimpleForm editable="false">
+                    <Label text="Check-In"/>
+                    <Text text="{path: 'wizard>/checkInDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}"/>
+                    
+                    <Label text="Check-Out"/>
+                    <Text text="{path: 'wizard>/checkOutDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}"/>
+
+                    <Label text="Room ID"/>
+                    <Text text="{wizard>/selectedRoomId}"/>
+
+                     <Label text="Guest ID"/>
+                    <Text text="{wizard>/selectedGuestId}"/>
+                </form:SimpleForm>
+            </WizardStep>
+        </Wizard>
+    </Page>
+</mvc:View>

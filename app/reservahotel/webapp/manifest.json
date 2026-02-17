@@ -105,6 +105,13 @@
           "target": [
             "TargetHotelDetail"
           ]
+        },
+        {
+          "name": "RouteCreateReservation",
+          "pattern": "Hotel/{hotelId}/Book",
+          "target": [
+            "TargetCreateReservation"
+          ]
         }
       ],
       "targets": {
@@ -115,6 +122,10 @@
         "TargetHotelDetail": {
           "id": "HotelDetail",
           "name": "HotelDetail"
+        },
+        "TargetCreateReservation": {
+          "id": "CreateReservation",
+          "name": "CreateReservation"
         }
       }
     },

@@ -12,12 +12,19 @@ sap.ui.define([
         },
 
         _onObjectMatched: function (oEvent) {
-            var sHotelId = oEvent.getParameter("arguments").hotelId;
+            this._sHotelId = oEvent.getParameter("arguments").hotelId;
             this.getView().bindElement({
-                path: "/Hotels(ID=" + sHotelId + ")",
+                path: "/Hotels(ID=" + this._sHotelId + ")",
                 parameters: {
                     expand: "rooms,rooms/reservations"
                 }
+            });
+        },
+
+        onPressBook: function () {
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("RouteCreateReservation", {
+                hotelId: this._sHotelId
             });
         },
 
