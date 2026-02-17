@@ -14,7 +14,7 @@ sap.ui.define([
         _onObjectMatched: function (oEvent) {
             var sHotelId = oEvent.getParameter("arguments").hotelId;
             this.getView().bindElement({
-                path: "/Hotels(ID=" + sHotelId + ",IsActiveEntity=true)",
+                path: "/Hotels(ID=" + sHotelId + ")",
                 parameters: {
                     expand: "rooms,rooms/reservations"
                 }
