@@ -44,6 +44,7 @@
                                 <Column><Text text="Room Number"/></Column>
                                 <Column><Text text="Type"/></Column>
                                 <Column><Text text="Price"/></Column>
+                                <Column><Text text="Status"/></Column>
                             </columns>
                             <items>
                                 <ColumnListItem>
@@ -51,13 +52,31 @@
                                         <ObjectIdentifier title="{roomNumber}"/>
                                         <Text text="{type}"/>
                                         <ObjectNumber number="{pricePerNight}" unit="{currency_code}"/>
+                                        <ObjectStatus text="{status}" state="{= ${status} === 'Available' ? 'Success' : (${status} === 'Maintenance' ? 'Warning' : 'Error') }" />
                                     </cells>
                                 </ColumnListItem>
                             </items>
                         </Table>
                     </IconTabFilter>
-                    <IconTabFilter icon="sap-icon://calendar" text="Reservations" key="reservations">
-                         <MessageStrip text="Reservations functionality coming soon in the next update." type="Information" showIcon="true"/>
+                    <IconTabFilter icon="sap-icon://calendar" text="Cancel/Check-in" key="reservations">
+                         <Table items="{rooms/reservations}" width="auto" noDataText="No reservations found">
+                            <columns>
+                                <Column><Text text="Guest"/></Column>
+                                <Column><Text text="Room"/></Column>
+                                <Column><Text text="Dates"/></Column>
+                                <Column><Text text="Status"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{guest/firstName} {guest/lastName}"/>
+                                        <Text text="{room/roomNumber}"/>
+                                        <Text text="{path: 'checkInDate', type: 'sap.ui.model.type.Date'} - {path: 'checkOutDate', type: 'sap.ui.model.type.Date'}"/>
+                                        <ObjectStatus text="{status}" state="{= ${status} === 'Booked' ? 'Success' : 'None' }"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
                     </IconTabFilter>
                 </items>
             </IconTabBar>

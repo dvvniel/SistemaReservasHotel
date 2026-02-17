@@ -29,12 +29,15 @@ sap.ui.define([
                 oWizard.discardProgress(oWizard.getSteps()[0]);
             }
 
-            // Filter Rooms by Hotel
+            // Filter Rooms by Hotel and Status
             var oRoomSelect = this.byId("roomSelect");
             var oBinding = oRoomSelect.getBinding("items");
             if (oBinding) {
-                var oFilter = new sap.ui.model.Filter("hotel_ID", "EQ", this._sHotelId);
-                oBinding.filter([oFilter]);
+                var aFilters = [
+                    new sap.ui.model.Filter("hotel_ID", "EQ", this._sHotelId),
+                    new sap.ui.model.Filter("status", "EQ", "Available")
+                ];
+                oBinding.filter(new sap.ui.model.Filter({ filters: aFilters, and: true }));
             }
         },
 

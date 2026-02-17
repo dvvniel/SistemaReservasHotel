@@ -29,6 +29,11 @@ entity Rooms : cuid, managed {
     type        : String(50); // e.g. Single, Double, Suite
     pricePerNight : Decimal(10, 2);
     currency    : Currency;
+    status      : String(20) enum {
+        Available   = 'Available';
+        Occupied    = 'Occupied';
+        Maintenance = 'Maintenance';
+    } default 'Available';
     reservations : Composition of many Reservations on reservations.room = $self;
 }
 
