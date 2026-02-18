@@ -61,30 +61,23 @@ sap.ui.define([
                 return;
             }
 
-            var oContext = oModel.createEntry("/Rooms", {
-                properties: {
-                    hotel_ID: this._sHotelId,
-                    roomNumber: oNewRoomData.roomNumber,
-                    type: oNewRoomData.type,
-                    pricePerNight: parseFloat(oNewRoomData.pricePerNight),
-                    currency_code: oNewRoomData.currency_code,
-                    status: oNewRoomData.status
-                },
-                success: function () {
-                    sap.m.MessageToast.show("Room added successfully");
-                    this._closeAddRoomDialog();
-                }.bind(this),
-                error: function () {
-                    sap.m.MessageToast.show("Error adding room");
-                }
+            var oListBinding = oModel.bindList("/Rooms");
+            var oContext = oListBinding.create({
+                hotel_ID: this._sHotelId,
+                roomNumber: oNewRoomData.roomNumber,
+                type: oNewRoomData.type,
+                pricePerNight: parseFloat(oNewRoomData.pricePerNight),
+                currency_code: oNewRoomData.currency_code,
+                status: oNewRoomData.status
             });
 
-            oModel.submitChanges({
-                success: function () {
-                    // Refresh the binding to show the new room
-                    this.getView().getElementBinding().refresh();
-                }.bind(this)
-            });
+            oContext.created().then(function () {
+                sap.m.MessageToast.show("Room added successfully");
+                this._closeAddRoomDialog();
+                this.getView().byId("idRoomsTable").getBinding("items").refresh();
+            }.bind(this), function (oError) {
+                sap.m.MessageToast.show("Error adding room");
+            }.bind(this));
         },
 
         onCancelAddRoom: function () {

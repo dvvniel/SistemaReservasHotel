@@ -39,7 +39,7 @@
             <IconTabBar id="idIconTabBar" expanded="true" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter icon="sap-icon://bed" text="Rooms" key="rooms">
-                        <Table items="{rooms}" width="auto">
+                        <Table id="idRoomsTable" items="{rooms}" width="auto">
                             <headerToolbar>
                                 <OverflowToolbar>
                                     <Title text="Rooms"/>
