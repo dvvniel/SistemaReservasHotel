@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog title="Add New Room" icon="sap-icon://add">
+        <content>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label text="Room Number" required="true"/>
+                    <Input id="newRoomNumber" placeholder="e.g. 101" value="{newRoom>/roomNumber}"/>
+                    
+                    <Label text="Type" required="true"/>
+                    <Select id="newRoomType" selectedKey="{newRoom>/type}">
+                        <core:Item key="Single" text="Single"/>
+                        <core:Item key="Double" text="Double"/>
+                        <core:Item key="Suite" text="Suite"/>
+                        <core:Item key="Deluxe" text="Deluxe"/>
+                    </Select>
+                    
+                    <Label text="Price Per Night" required="true"/>
+                    <Input id="newRoomPrice" type="Number" placeholder="0.00" value="{newRoom>/pricePerNight}"/>
+                    
+                    <Label text="Currency" required="true"/>
+                    <Input id="newRoomCurrency" value="{newRoom>/currency_code}" placeholder="USD, EUR, etc."/>
+
+                    <Label text="Status"/>
+                    <Select id="newRoomStatus" selectedKey="{newRoom>/status}">
+                        <core:Item key="Available" text="Available"/>
+                        <core:Item key="Maintenance" text="Maintenance"/>
+                    </Select>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="Save" type="Emphasized" press=".onSaveRoom"/>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press=".onCancelAddRoom"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

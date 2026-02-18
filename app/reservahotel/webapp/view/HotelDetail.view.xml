@@ -40,6 +40,13 @@
                 <items>
                     <IconTabFilter icon="sap-icon://bed" text="Rooms" key="rooms">
                         <Table items="{rooms}" width="auto">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Rooms"/>
+                                    <ToolbarSpacer/>
+                                    <Button icon="sap-icon://add" text="Add Room" press=".onAddRoom"/>
+                                </OverflowToolbar>
+                            </headerToolbar>
                             <columns>
                                 <Column><Text text="Room Number"/></Column>
                                 <Column><Text text="Type"/></Column>
